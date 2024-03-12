@@ -1,0 +1,24 @@
+use('FatecVotorantim')
+const prestador = {
+    "cnpj": "01234567891021",
+    "razao_social": "SERVIÇOS MOTOBOY 2 LTDA.",
+    "cep": "133310160",
+    "endereco":{
+        "logradouro": "Av. Pesidente Kennedy, 321",
+        "complemento": "",
+        "bairro": "Centro",
+        "localidade": "Votorantim",
+        "uf": "SP"
+    },
+    "cnae_fiscal": 451510,
+    "nome_fantasia": "ZÉ MOTOBOY",
+    "data_inicio_atividade": "2022-07-22",
+    "localização": {
+        "type": "Point",
+        "coordinates": [-23.2904, -47.2963]
+    }
+}
+db.prestadores.insertOne(prestador)
+
+use('FatecVotorantim')
+db.prestadores.find()
