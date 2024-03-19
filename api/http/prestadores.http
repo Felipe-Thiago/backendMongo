@@ -1,0 +1,46 @@
+// Teste da API REST de Prestadores
+@baseURL = http://localhost:4000/api/prestadores
+
+// GET - Lista todos os prestadores
+GET {{baseURL}}/?limit=3&skip=0
+Content-Type: application/json
+
+###
+// GET - Lista o prestador pelo ID
+GET {{baseURL}}/id/65ef96029c4ad0c824292780
+Content-Type: application/json
+
+###
+// GET - Lista o prestador pela razão social ou fantasia
+GET {{baseURL}}/razao/maria
+Content-Type: application/json
+
+###
+// DELETE - Remove o prestador pelo id
+DELETE {{baseURL}}/id/65efaa9ea5f0297d612cdac9
+Content-Type: application/json
+
+###
+//POST - Insere um novo prestador pelo objeto
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "cnpj": "01234567891102",
+    "razao_social": "MARIA ALCINA TRANSPORTES LTDA.",
+    "cep": "18110680",
+    "endereco":{
+        "logradouro": "Av. Pesidente Kennedy, 123",
+        "complemento": "",
+        "bairro": "Centro",
+        "localidade": "Votorantim",
+        "uf": "SP"
+    },
+    "cnae_fiscal": 451510,
+    "nome_fantasia": "MARIA CAMINHÕES",
+    "data_inicio_atividade": "2022-07-22",
+    "localização": {
+        "type": "Point",
+        "coordinates": [-23.2904, -47.2963]
+    }
+}
