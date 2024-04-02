@@ -11,9 +11,12 @@ const validaPrestador = [
     .not().isEmpty().trim().withMessage('É obrigatório informar o cnpj')
     .isNumeric().withMessage('O CNPJ deve ter apenas números')
     .isLength({min: 14, max: 14}).withMessage('O CNPJ deve ter 14 dígitos')
-    .custom(async (cnpj) =>{
+    .custom(async (cnpj, { req }) =>{
         const contaPrestador = await db.collection(nomeCollection)
-        .countDocuments({'cnpj': cnpj})
+        .countDocuments({
+            'cnpj': cnpj, 
+            '_id': {$ne: new ObjectId(req.body._id)}   //Exclui o doc atual
+        }) 
         if(contaPrestador > 0){
             throw new Error('O CNPJ informado já está cadastrado')
         }
@@ -134,7 +137,7 @@ router.get('/razao/:filtro', async (req, res)=>{
  * Remove o prestador de serviço pelo id
  * Parâmetros: id
  */
-router.delete('/id/:id', async(req, res)=>{
+router.delete('/:id', async(req, res)=>{
     const result = await db.collection(nomeCollection).deleteOne({
         "_id": {$eq: new ObjectId(req.params.id)}
     })

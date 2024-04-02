@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ###
 // DELETE - Remove o prestador pelo id
-DELETE {{baseURL}}/id/65efaa9ea5f0297d612cdac9
+DELETE {{baseURL}}/id/65ef96029c4ad0c824292780
 Content-Type: application/json
 
 ###
