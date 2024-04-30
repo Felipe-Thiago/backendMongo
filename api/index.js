@@ -6,6 +6,7 @@ const app = express()
 const {PORT} = process.env
 //Import das rotas da aplicação
 import RotasPrestadores from './routes/prestador.js'
+import RotasUsuarios from './routes/usuario.js'
 
 app.use(express.json()) //Habilita o parse do JSON
 //Rota de conteúdo público
@@ -22,8 +23,12 @@ app.get('/api', (req, res)=> {
         version: '1.0.0'
     })
 })
+
 //Rotas da API
 app.use('/api/prestadores', RotasPrestadores)
+app.use('/api/usuarios', RotasUsuarios)
+
+
 //Listen
 app.listen(PORT, function(){
     console.log(`Servidor rodando na porta ${PORT}`)
