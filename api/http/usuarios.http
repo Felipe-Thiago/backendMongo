@@ -12,5 +12,17 @@ Content-Type: application/json
 }
 
 ###
+//lista todos os usuários via GET
 GET {{baseURL}}
 Content-Type: application/json
+acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+
+###
+//POST - Efetua o login
+POST {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "email": "josealves@uol.com.br",
+    "senha": "Alun0$"
+}

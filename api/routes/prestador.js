@@ -1,6 +1,7 @@
 import express from 'express'
 import {connectToDatabase} from '../utils/mongodb.js'
 import { check, validationResult } from 'express-validator'
+import auth from '../middleware/auth.js'
 
 const router = express.Router()
 const {db, ObjectId} = await connectToDatabase()
@@ -66,7 +67,7 @@ const validaPrestador = [
  * Lista todos os prestadores de serviço
  * Parâmetros: limit, skip e order
  */
-router.get('/', async (req, res) =>{
+router.get('/', auth, async (req, res) =>{
     const {limit, skip, order} = req.query //Obter da URL
     try{
         const docs = []
@@ -91,7 +92,7 @@ router.get('/', async (req, res) =>{
  * Lista o prestador de serviço pelo id
  * Parâmetros: limit, skip e order
  */
-router.get('/id/:id', async (req, res) =>{
+router.get('/id/:id', auth, async (req, res) =>{
     try{
         const docs = []
         await db.collection(nomeCollection)
@@ -116,7 +117,7 @@ router.get('/id/:id', async (req, res) =>{
  * Lista o prestador de serviço pela razão social
  * Parâmetros: filtro
  */
-router.get('/razao/:filtro', async (req, res)=>{
+router.get('/razao/:filtro', auth, async (req, res)=>{
     try{
         const filtro = req.params.filtro.toString()
         const docs = []
@@ -148,7 +149,7 @@ router.get('/razao/:filtro', async (req, res)=>{
  * Remove o prestador de serviço pelo id
  * Parâmetros: id
  */
-router.delete('/:id', async(req, res)=>{
+router.delete('/:id', auth, async(req, res)=>{
     const result = await db.collection(nomeCollection).deleteOne({
         "_id": {$eq: new ObjectId(req.params.id)}
     })
@@ -171,7 +172,8 @@ router.delete('/:id', async(req, res)=>{
  * Parâmetros: Objeto prestador
  */
 
-router.post('/', validaPrestador, async(req, res)=>{
+router.post('/', auth, validaPrestador, async(req, res)=>{
+    req.body.usuarioInclusao = req.usuario.id
     try{
         const errors = validationResult(req)
         if(!errors.isEmpty()){
@@ -191,7 +193,7 @@ router.post('/', validaPrestador, async(req, res)=>{
  * Parâmetros: Objeto prestador
  */
 
-router.put('/', validaPrestador, async(req, res) =>{
+router.put('/', auth, validaPrestador, async(req, res) =>{
     let idDocumento = req.body._id     //--> armazenamos o _id do documento
     delete req.body._id      //--> removemos o _id do body que foi recebido na req.
     try{

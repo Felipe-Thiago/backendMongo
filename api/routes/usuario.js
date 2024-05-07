@@ -3,6 +3,7 @@ import {connectToDatabase} from '../utils/mongodb.js'
 import { check, validationResult } from 'express-validator'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import auth from '../middleware/auth.js'
 
 
 const router = express.Router()
@@ -69,7 +70,7 @@ router.post('/', ValidaUsuario, async(req, res) => {
      //definindo o avatar default
      req.body.avatar = `https://ui-avatars.com/api/?name=${req.body.nome.replace(/ /g, '+')}&background=F00&color=FFF`
     //criptografia da senha
-    //genSalt => impete que 2 senhas iguais tenham resultados iguais
+    //genSalt => impede que 2 senhas iguais tenham resultados iguais
     const salt = await bcrypt.genSalt(10)
     req.body.senha = await bcrypt.hash(req.body.senha, salt)
     //iremos salvar o registro
@@ -81,7 +82,7 @@ router.post('/', ValidaUsuario, async(req, res) => {
 })
 
 //GET Usuário
-router.get('/', async(req, res)=>{
+router.get('/', auth, async(req, res)=>{
     try{
         const docs = []
         await db.collection(nomeCollection)
@@ -96,6 +97,66 @@ router.get('/', async(req, res)=>{
             message: 'Erro ao obter a listagem dos usuários',
             error: `${err.message}`
         })
+    }
+})
+
+const validaLogin = [
+    check('email')
+    .not().isEmpty().trim().withMessage('O email é obrigatório')
+    .isEmail().withMessage('Informe um e-mail válido para o login'),
+    
+    check('senha')
+    .not().isEmpty().trim().withMessage('A senha é obrigatória')
+]
+
+router.post('/login', validaLogin, async(req, res)=>{
+    const schemaErrors = validationResult(req)
+    if(!schemaErrors.isEmpty()){
+        return res.status(403).json({errors: schemaErrors.array()})
+    }
+    //obtendo os dados para o login
+    const {email, senha} = req.body
+    try{
+        //verificar se o email existe no mongodb
+        let usuario = await db.collection(nomeCollection)
+        .find({email}).limit(1).toArray()
+        // se o array estiver vazio, é porque o email não existe
+        if (!usuario.length){
+            return res.status(404).json({ //not found - não encontrado
+                errors: {
+                    value: `${email}`,
+                    msg: `O email ${email} não está cadastrado!`,
+                    param: 'email'
+                }
+            })
+            
+        }
+        //se o email existir, comparamos a senha está correta
+        const isMatch = await bcrypt.compare(senha, usuario[0].senha)
+        if(!isMatch){
+            return res.status(403).json({ //forbidden - acesso negado
+                errors: [{
+                    value: 'senha',
+                    msg: 'A senha informada está incorreta',
+                    param: 'senha'
+                }]
+            })
+        }
+        
+        //Iremos gerar o token JWT
+        jwt.sign(
+            { usuario: {id: usuario[0]._id} },
+            process.env.SECRET_KEY, 
+            { expiresIn: process.env.EXPIRES_IN },
+            (err, token) => {
+                if (err) throw err
+                res.status(200).json({
+                    access_token: token
+                })
+            }
+        )
+    } catch(e){
+        console.error(e)
     }
 })
 
