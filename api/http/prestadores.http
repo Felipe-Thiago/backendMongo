@@ -4,13 +4,13 @@
 // GET - Lista todos os prestadores
 GET {{baseURL}}/?limit=3&skip=0
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTY0NzM1OCwiZXhwIjoxNzE1NzMzNzU4fQ.v8Oab1nXBSj9VvIVJfv0v_PXaID8NF4l17T-DKckfNE
 
 ###
 // GET - Lista o prestador pelo ID
 GET {{baseURL}}/id/663972280c00461cc97ef4ad
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTY0NzM1OCwiZXhwIjoxNzE1NzMzNzU4fQ.v8Oab1nXBSj9VvIVJfv0v_PXaID8NF4l17T-DKckfNE
 
 ###
 // GET - Lista o prestador pela razão social ou fantasia

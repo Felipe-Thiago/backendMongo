@@ -1,4 +1,4 @@
-const urlBase = 'http://localhost:4000/api'
+const urlBase = window.location.href.replace(/\/[^\/]*$/, '') + '/api'
 
 document.getElementById('formLogin')
         .addEventListener('submit', function(event){
