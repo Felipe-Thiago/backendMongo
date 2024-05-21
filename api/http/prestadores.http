@@ -2,47 +2,47 @@
 @baseURL = http://localhost:4000/api/prestadores
 
 // GET - Lista todos os prestadores
-GET {{baseURL}}/?limit=3&skip=0
+GET {{baseURL}}/
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTY0NzM1OCwiZXhwIjoxNzE1NzMzNzU4fQ.v8Oab1nXBSj9VvIVJfv0v_PXaID8NF4l17T-DKckfNE
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjI0NjI5OSwiZXhwIjoxNzE2MzMyNjk5fQ.TieQtM_Q3h1QlP5UV3RjwlIAvy2TiuRwk5Btb5CDEGA
 
 ###
 // GET - Lista o prestador pelo ID
 GET {{baseURL}}/id/663972280c00461cc97ef4ad
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTY0NzM1OCwiZXhwIjoxNzE1NzMzNzU4fQ.v8Oab1nXBSj9VvIVJfv0v_PXaID8NF4l17T-DKckfNE
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTY0NzM1OCwiZXhwIjoxNzE1NzMzNzU4fQ.v8Oab1nXBSj9VvIVJfv0v_PXaID8NF4l17T-DKckfNE
 
 ###
 // GET - Lista o prestador pela razão social ou fantasia
 GET {{baseURL}}/razao/maria
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
 
 ###
 // DELETE - Remove o prestador pelo id
 DELETE {{baseURL}}/id/65ef96029c4ad0c824292780
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
 
 ###
 //POST - Insere um novo prestador pelo objeto
 POST {{baseURL}}
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjI1MTM2OCwiZXhwIjoxNzE2MzM3NzY4fQ.TLshux3xQufpE1ZFr6E105gMD10WuxEX28zt4_ixVUA
 
 {
-    "cnpj": "01234567891111",
-    "razao_social": "JOSÉ LOPES TRANSPORTES LTDA.",
+    "cnpj": "01234567891321",
+    "razao_social": "JOSÉ LOPESSS TRANSPORTES LTDA.",
     "cep": "18110680",
     "endereco":{
-        "logradouro": "Av. Pesidente Kennedy, 120",
+        "logradouro": "Av. Pesidente Kennedy, 119",
         "complemento": "",
         "bairro": "Centro",
         "localidade": "Votorantim",
         "uf": "SP"
     },
     "cnae_fiscal": 451510,
-    "nome_fantasia": "JOSELO",
+    "nome_fantasia": "JOSELOPSS",
     "data_inicio_atividade": "2022-07-22",
     "localização": {
         "type": "Point",
@@ -55,7 +55,7 @@ acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOT
 //PUT - Altera um prestador pelo _id já existente
 PUT {{baseURL}}
 Content-Type: application/json
-acess-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
 
 {
     "_id": "65ef96029c4ad0c824292780",
