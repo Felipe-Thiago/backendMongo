@@ -62,7 +62,7 @@ describe('API REST de Prestadores com o Token', ()=>{
     })
 
     dadosPrestador = {
-        "cnpj": "01234567890002",
+        "cnpj": "01234567890013",
         "razao_social": "JOSÉ LOPES 2 TRANSPORTES LTDA.",
         "cep": "18110680",
         "endereco":{
@@ -75,7 +75,7 @@ describe('API REST de Prestadores com o Token', ()=>{
         "cnae_fiscal": 451510,
         "nome_fantasia": "JOSELOPS",
         "data_inicio_atividade": "2022-07-22",
-        "localização": {
+        "localizacao": {
             "type": "Point",
             "coordinates": [-23.2904, -47.2963]
         }
@@ -113,5 +113,56 @@ describe('API REST de Prestadores com o Token', ()=>{
         .set('Content-Type', 'application/json')
         .set('access-token', token)
         .expect(200)
+    })
+
+    it('PUT / - Altera os dados do prestador', async()=> {
+        novoDadosPrestador = {
+            ...dadosPrestador, //spread operator
+            '_id': idPrestadorInserido
+        }
+        novoDadosPrestador.razao_social += ' alterado'
+        const response = await request(baseURL)
+        .put('/prestadores')
+        .set('Content-Type', 'application/json')
+        .set('access-token', token)
+        .send(novoDadosPrestador)
+        .expect(202) //Accepted
+
+        expect(response.body).toHaveProperty('acknowledged')
+        expect(response.body.acknowledged).toBe(true)
+
+        expect(response.body).toHaveProperty('modifiedCount')
+        expect(typeof response.body.modifiedCount).toBe('number')
+        expect(response.body.modifiedCount).toBeGreaterThan(0)
+    })
+
+    it('DELETE / - Remove o prestador', async() =>{
+        const response = await request(baseURL)
+        .delete(`/prestadores/${idPrestadorInserido}`)
+        .set('Content-Type', 'application/json')
+        .set('access-token', token)
+        .expect(200) //OK
+
+        expect(response.body).toHaveProperty('acknowledged')
+        expect(response.body.acknowledged).toBe(true)
+
+        expect(response.body).toHaveProperty('deletedCount')
+        expect(typeof response.body.deletedCount).toBe('number')
+        expect(response.body.deletedCount).toBeGreaterThan(0)
+    })
+
+    it('POST - Insere um prestador sem o CNPJ', async() => {
+        dadosPrestador.cnpj = ''
+        const response = await request(baseURL)
+        .post('/prestadores')
+        .set('Content-Type','application/json')
+        .set('access-token', token)
+        .set(dadosPrestador)
+        .expect(400) //Bad Request
+    
+        expect(response.body).toHaveProperty('errors')
+        const avisoErro = response.body.errors[0].msg
+    
+        expect(avisoErro).toEqual('É obrigatório informar o cnpj')
     })
 })

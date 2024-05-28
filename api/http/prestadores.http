@@ -4,7 +4,7 @@
 // GET - Lista todos os prestadores
 GET {{baseURL}}/
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjI0NjI5OSwiZXhwIjoxNzE2MzMyNjk5fQ.TieQtM_Q3h1QlP5UV3RjwlIAvy2TiuRwk5Btb5CDEGA
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjg1MTg5OSwiZXhwIjoxNzE2OTM4Mjk5fQ.AgUHI7THkarzmm-jl-ihWW8haJeQOZZDAWa5zcrvoD4
 
 ###
 // GET - Lista o prestador pelo ID
@@ -20,18 +20,18 @@ access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzO
 
 ###
 // DELETE - Remove o prestador pelo id
-DELETE {{baseURL}}/id/65ef96029c4ad0c824292780
+DELETE {{baseURL}}/id/665514f4e2201f261249d26b
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjg1MTg5OSwiZXhwIjoxNzE2OTM4Mjk5fQ.AgUHI7THkarzmm-jl-ihWW8haJeQOZZDAWa5zcrvoD4
 
 ###
 //POST - Insere um novo prestador pelo objeto
 POST {{baseURL}}
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjI1MTM2OCwiZXhwIjoxNzE2MzM3NzY4fQ.TLshux3xQufpE1ZFr6E105gMD10WuxEX28zt4_ixVUA
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjg1MTg5OSwiZXhwIjoxNzE2OTM4Mjk5fQ.AgUHI7THkarzmm-jl-ihWW8haJeQOZZDAWa5zcrvoD4
 
 {
-    "cnpj": "01234567891321",
+    "cnpj": "665514f4e2201f261249d26b",
     "razao_social": "JOSÉ LOPESSS TRANSPORTES LTDA.",
     "cep": "18110680",
     "endereco":{
@@ -55,12 +55,12 @@ access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzO
 //PUT - Altera um prestador pelo _id já existente
 PUT {{baseURL}}
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNTAzNzQwMywiZXhwIjoxNzE1MTIzODAzfQ.DccmH-avax74bqCRKluZrwXjhqjDUMFl2DES65gvK6w
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjYzOTYyMGNiNGJjM2U1MDhkNTJjM2EyIn0sImlhdCI6MTcxNjg1MTg5OSwiZXhwIjoxNzE2OTM4Mjk5fQ.AgUHI7THkarzmm-jl-ihWW8haJeQOZZDAWa5zcrvoD4
 
 {
-    "_id": "65ef96029c4ad0c824292780",
+    "_id": "665514f4e2201f261249d26b",
     "cnpj": "01234567891029",
-    "razao_social": "SERVIÇOS MOTOBOY ALTERADO LTDA.",
+    "razao_social": "SERVIÇOS MOTOBOY ALTERADO 1 LTDA.",
     "cep": "11112302",
     "endereco": {
       "logradouro": "Av. Pesidente Kennedy, 333",
